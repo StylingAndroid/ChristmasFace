@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+    android:id="@+id/camera_facing"
+    android:icon="@drawable/ic_camera_rear"
+    android:title="@string/camera"
+    app:showAsAction="ifRoom" />
+  <item
+    android:id="@+id/decoration_type"
+    android:icon="@drawable/ic_elf"
+    android:title="@string/overlay_type"
+    app:showAsAction="ifRoom" />
+</menu>

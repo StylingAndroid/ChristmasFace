@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/fragment_scanner"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fitsSystemWindows="false"
+  android:keepScreenOn="true">
+
+  <com.stylingandroid.christmasface.camera.CameraSourcePreview
+    android:id="@+id/preview"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <com.stylingandroid.christmasface.camera.GraphicOverlay
+      android:id="@+id/scanner_overlay"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent" />
+
+  </com.stylingandroid.christmasface.camera.CameraSourcePreview>
+
+  <ImageButton
+    android:id="@+id/camera_take_picture"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="48dp"
+    android:background="@color/colorChrome"
+    android:contentDescription="@null"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingBottom="24dp"
+    android:paddingTop="24dp"
+    android:src="@drawable/animated_camera"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+  <TextView
+    android:id="@+id/not_operational"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="48dp"
+    android:background="@color/colorChrome"
+    android:paddingBottom="24dp"
+    android:paddingEnd="48dp"
+    android:paddingStart="48dp"
+    android:paddingTop="24dp"
+    android:text="@string/not_operational"
+    android:textColor="@android:color/white"
+    android:visibility="gone"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">Christmas Face</string>
+  <string name="camera_permission_title">Camera Permission Required</string>
+  <string name="camera_permission_message">This app requires access to the device camera and cannot work without the camera permission. To use this app please grant the Camera permission is Settings</string>
+  <string name="not_operational">A required Play Services library has not yet downloaded. If this message does not disappear shortly, then please check the device storage is not full.</string>
+  <string name="share">Share</string>
+  <string name="camera">Camera</string>
+  <string name="overlay_type">Overlay Type</string>
+  <string name="settings">Settings</string>
+</resources>
