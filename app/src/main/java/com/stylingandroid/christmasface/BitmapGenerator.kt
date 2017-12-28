@@ -13,6 +13,7 @@ import android.util.SparseArray
 import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.face.Face
 import com.google.android.gms.vision.face.FaceDetector
+import kotlinx.coroutines.experimental.CommonPool
 import kotlinx.coroutines.experimental.async
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -45,7 +46,7 @@ class BitmapGenerator(
 
     private var scaleFactor: Float = 1f
 
-    suspend fun convert(bytes: ByteArray): Bitmap = async {
+    suspend fun convert(bytes: ByteArray): Bitmap = async(CommonPool) {
         BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
                 .rotateIfNecessary().let { newBitmap ->
             newBitmap.detectFace()?.let { face ->
@@ -98,20 +99,17 @@ class BitmapGenerator(
             isPortrait != bitmap.isPortrait
 
     private fun Bitmap.rotate(): Bitmap =
-            Matrix().let {
-                it.postRotate(90f * orientationFactor)
-                Bitmap.createBitmap(height, width, config).apply {
-                    Canvas(this).apply {
-                        rotate(90f * orientationFactor)
-                        matrix = Matrix().apply {
-                            if (orientationFactor > 0f) {
-                                postTranslate(0f, -this@rotate.height.toFloat())
-                            } else {
-                                postTranslate(-this@rotate.width.toFloat(), 0f)
-                            }
-                        }.also {
-                            drawBitmap(this@rotate, it, null)
+            Bitmap.createBitmap(height, width, config).apply {
+                Canvas(this).apply {
+                    rotate(90f * orientationFactor)
+                    matrix = Matrix().apply {
+                        if (orientationFactor > 0f) {
+                            postTranslate(0f, -this@rotate.height.toFloat())
+                        } else {
+                            postTranslate(-this@rotate.width.toFloat(), 0f)
                         }
+                    }.also {
+                        drawBitmap(this@rotate, it, null)
                     }
                 }
             }
